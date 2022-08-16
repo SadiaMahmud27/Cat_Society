@@ -6,8 +6,10 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const { route } = require('./routes/routes');
 
+
 const app = express(); 
 const port = process.env.PORT || 5000;
+
 
 // middlewares 
 // app.use(cors()); 
@@ -24,8 +26,10 @@ useCreateIndex: true
 }).then(() => console.log("Connected to Database!"))
 .catch((err) => console.log(err));
 
+
 //routes prefix
 app.use("/api/post" , require("./routes/routes"))
+
 
 //start server
 // app.get("/",(req, res) => {res.send("jekonno ekta line")})
