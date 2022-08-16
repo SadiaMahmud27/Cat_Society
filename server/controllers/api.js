@@ -1,9 +1,8 @@
 const Post = require("../models/posts");
 
 module.exports = class API {
-    
 
-//fetch all posts
+    //fetch all posts
 static async fetchAllPost(req, res){
     try{
         const posts = await Post.find();
@@ -64,7 +63,7 @@ static async updatePost(req, res) {
             res.status(404).json({ message: err.message });
     }    
 
-
+}
 
 // delete a post 
 static async deletePost(req, res) {
@@ -78,12 +77,16 @@ static async deletePost(req, res) {
                 console.log(err); 
             }
             res.status (200).json({ message: "Post deleted successfully!"});
-            } catch (err) {
+            } 
+        }catch (err) {
                 res.status(404).json({ message: err.message }) ;
                 }
             }
-        }
-    }
 }
+
+    
+
+
+    
 
 
