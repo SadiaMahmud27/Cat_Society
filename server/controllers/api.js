@@ -15,13 +15,13 @@ static async fetchAllPost(req, res){
 
 // fetch post by ID 
 static async fetchPostByID(req, res) {
-const id = req.params.id;
-try{
-    const post = await Post.findByID(id);
-    res.status(200).json(post);
-}catch (err) {
+    const id = req.params.id;
+    try{
+    const post = await Post.findById(id);
+    res.status(200).json(post); 
+    } catch (err) {  
     res.status(404).json({ message: err.message })
-}
+    }
 }
 
 
@@ -39,22 +39,22 @@ static async createPost(req, res) {
 }
 
 
-// update a post 
+// update a post - can update only title or image
 static async updatePost(req, res) {
     const id = req.params.id; 
     let new_image = ""; 
     if (req.file) { 
-        new_image = reg.file.filename; 
+        new_image = req.file.filename; //will get the file name from multer middleware
         try {
-            fs.unlinkSync("./uploads/" + req.body.old_image); 
+            fs.unlinkSync("./uploads/" + req.body.old_image); //first remove the old image, then upload the new image on that place in the directory
         } catch (err) {
             console.log(err);
         } 
-    }else {
+    } else {
         new_image = req.body.old_image;
         }
         const newPost = req.body; 
-        newpost.image = new_image;
+        newPost.image = new_image;
 
         try {
             await Post.findByIdAndUpdate(id, newPost);
