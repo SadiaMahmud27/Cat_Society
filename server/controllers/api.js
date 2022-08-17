@@ -1,5 +1,5 @@
 const Post = require("../models/posts");
-
+const User = require("../models/users");
 module.exports = class API {
 
     //fetch all posts
@@ -82,10 +82,37 @@ static async deletePost(req, res) {
                 res.status(404).json({ message: err.message }) ;
                 }
             }
+
+
+// create a user 
+static async createUser(req, res) {
+    const email = req.params.email;//get all the body key value pair and assign in post constant
+    const password = req.params.password;//get all the body key value pair and assign in post constant
+    const name = req.params.name;//get all the body key value pair and assign in post constant
+    const user = {email: email, password: password, name: name}
+    console.log(user);
+    try { 
+        await User.create(user);
+        res.status(201).json({ message: "User created successfully!"});
+    } catch (err) {
+        res.status(400).json({ message: err.message })
+    }
 }
 
+static async login(req, res) {
+    const email = req.params.email;//get all the body key value pair and assign in post constant
+    const password = req.params.password;//get all the body key value pair and assign in post constant
+    const user = {email: email, password: password}
     
-
+    try{
+    const loggedInUser = await User.findOne(user);
+    res.status(200).json(loggedInUser); 
+    } catch (err) {  
+    res.status(404).json({ message: err.message })
+    }
+}
+    
+}
 
     
 
