@@ -21,8 +21,8 @@ app.use(express.static("uploads")); //all the images will be uploded
 mongoose.connect(process.env.DB_URI, {
 useNewUrlParser: true,
 useUnifiedTopology: true,
-useFindAndModify: true,
-useCreateIndex: true
+//useFindAndModify: true,
+//useCreateIndex: true
 }).then(() => console.log("Connected to Database!"))
 .catch((err) => console.log(err));
 

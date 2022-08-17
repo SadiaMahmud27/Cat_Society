@@ -20,9 +20,12 @@ let upload = multer({
 
 //difine all the routes
 router.get("/", API.fetchAllPost);
+router.post("/user/create/:email/:password/:name", API.createUser);
+router.get("/user/login/:email/:password", API.login);
 router.get("/:id", API.fetchPostByID);
 router.post("/", upload, API.createPost);
 router.patch("/:id", upload, API.updatePost); //patch allows to update record partialy
 router.delete("/:id", API.deletePost);
+
 
 module.exports = router;
