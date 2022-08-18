@@ -18,14 +18,14 @@ let upload = multer({
  storage: storage,
 }).single("image");
 
-//difine all the routes
-router.get("/", API.fetchAllPost);
+//define all the routes
+router.get("/", API.fetchAllCat);
 router.post("/user/create/:email/:password/:name", API.createUser);
 router.get("/user/login/:email/:password", API.login);
-router.get("/:id", API.fetchPostByID);
-router.post("/", upload, API.createPost);
-router.patch("/:id", upload, API.updatePost); //patch allows to update record partialy
-router.delete("/:id", API.deletePost);
+router.get("/:id", API.fetchCatByID);
+router.post("/", upload, API.createCat);
+router.patch("/:id", upload, API.updateCat); //patch allows to update record partialy
+router.delete("/:id", API.deleteCat);
 
 
 module.exports = router;

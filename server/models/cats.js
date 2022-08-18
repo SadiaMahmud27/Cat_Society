@@ -1,7 +1,7 @@
 const mongoose =  require('mongoose');
 
-const postSchema = mongoose.Schema({
-    title: String, 
+const catSchema = mongoose.Schema({
+    name: String, 
     category: String, 
     content: String, 
     image: String, 
@@ -10,4 +10,4 @@ const postSchema = mongoose.Schema({
         default: Date.now,
     }
     });
-    module.exports = mongoose.model("Post", postSchema);
+    module.exports = mongoose.model("Cat", catSchema);

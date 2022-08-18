@@ -4,7 +4,7 @@ require('dotenv').config();
 const express = require("express"); 
 const mongoose = require("mongoose"); 
 const cors = require("cors");
-const { route } = require('./routes/routes');
+const { router } = require('./routes/routes');
 
 
 const app = express(); 
@@ -12,7 +12,7 @@ const port = process.env.PORT || 5000;
 
 
 // middlewares 
-// app.use(cors()); 
+app.use(cors()); 
 // app.use(express.json); //beacuse it's a json rest API
 // app.use(express.urlencoded({ extended: true })); 
 app.use(express.static("uploads")); //all the images will be uploded
@@ -25,7 +25,6 @@ useUnifiedTopology: true,
 //useCreateIndex: true
 }).then(() => console.log("Connected to Database!"))
 .catch((err) => console.log(err));
-
 
 //routes prefix
 app.use("/api/post" , require("./routes/routes"))

@@ -7,10 +7,10 @@
       <v-list-items>
         <v-list-item-content>
           <v-list-item-title>
-            Movie Review
+            Cat Society
           </v-list-item-title>
           <v-list-item-subtitle>
-            Post your movie reviews
+            All About Cats
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-items>

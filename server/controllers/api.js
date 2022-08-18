@@ -1,46 +1,46 @@
-const Post = require("../models/posts");
+const Cat = require("../models/cats");
 const User = require("../models/users");
 module.exports = class API {
 
-    //fetch all posts
-static async fetchAllPost(req, res){
+    //fetch all cats
+static async fetchAllCat(req, res){
     try{
-        const posts = await Post.find();
-        res.status(200).json(posts);
+        const cats = await Cat.find();
+        res.status(200).json(cats)
     } catch (err) {
         res.status(404).json({ message: err.message })
     }
 }
 
 
-// fetch post by ID 
-static async fetchPostByID(req, res) {
+// fetch cat by ID 
+static async fetchCatByID(req, res) {
     const id = req.params.id;
     try{
-    const post = await Post.findById(id);
-    res.status(200).json(post); 
+    const cat = await Cat.findById(id);
+    res.status(200).json(cat); 
     } catch (err) {  
     res.status(404).json({ message: err.message })
     }
 }
 
 
-// create a post 
-static async createPost(req, res) {
-    const post = req.body; //get all the body key value pair and assign in post constant
+// create a cat 
+static async createCat(req, res) {
+    const cat = req.body; //get all the body key value pair and assign in cat constant
     const imagename = req.file.filename; 
-    post.image = imagename;
+    cat.image = imagename;
     try { 
-        await Post.create(post);
-        res.status(201).json({ message: "Post created successfully!"});
+        await Cat.create(cat);
+        res.status(201).json({ message: "Cat created successfully!"});
     } catch (err) {
         res.status(400).json({ message: err.message })
     }
 }
 
 
-// update a post - can update only title or image
-static async updatePost(req, res) {
+// update a cat - can update only title or image
+static async updateCat(req, res) {
     const id = req.params.id; 
     let new_image = ""; 
     if (req.file) { 
@@ -53,30 +53,30 @@ static async updatePost(req, res) {
     } else {
         new_image = req.body.old_image;
         }
-        const newPost = req.body; 
-        newPost.image = new_image;
+        const newCat = req.body; 
+        newCat.image = new_image;
 
         try {
-            await Post.findByIdAndUpdate(id, newPost);
-            res.status(200).json({ message: "Post updated successfully!" }); 
+            await Cat.findByIdAndUpdate(id, newCat);
+            res.status(200).json({ message: "Cat updated successfully!" }); 
         } catch (err) {
             res.status(404).json({ message: err.message });
     }    
 
 }
 
-// delete a post 
-static async deletePost(req, res) {
+// delete a cat 
+static async deleteCat(req, res) {
     const id = req.params.id; 
     try {
-        const result = await Post.findByIdAndDelete(id); 
+        const result = await Cat.findByIdAndDelete(id); 
         if (result.image != "") { 
             try {
                 fs.unlinkSync("./uploads/" + result.image); 
             } catch (err){
                 console.log(err); 
             }
-            res.status (200).json({ message: "Post deleted successfully!"});
+            res.status (200).json({ message: "Cat deleted successfully!"});
             } 
         }catch (err) {
                 res.status(404).json({ message: err.message }) ;
@@ -86,9 +86,9 @@ static async deletePost(req, res) {
 
 // create a user 
 static async createUser(req, res) {
-    const email = req.params.email;//get all the body key value pair and assign in post constant
-    const password = req.params.password;//get all the body key value pair and assign in post constant
-    const name = req.params.name;//get all the body key value pair and assign in post constant
+    const email = req.params.email;//get all the body key value pair and assign in cat constant
+    const password = req.params.password;//get all the body key value pair and assign in cat constant
+    const name = req.params.name;//get all the body key value pair and assign in cat constant
     const user = {email: email, password: password, name: name}
     console.log(user);
     try { 
@@ -100,8 +100,8 @@ static async createUser(req, res) {
 }
 
 static async login(req, res) {
-    const email = req.params.email;//get all the body key value pair and assign in post constant
-    const password = req.params.password;//get all the body key value pair and assign in post constant
+    const email = req.params.email;//get all the body key value pair and assign in cat constant
+    const password = req.params.password;//get all the body key value pair and assign in cat constant
     const user = {email: email, password: password}
     
     try{
