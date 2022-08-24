@@ -14,12 +14,12 @@ static async getPostById(id) {
     return res.data;
 }
 // to insert post into database 
-static async addPost(post) {
+static async addPost(post) { 
     const res = await axios.post(url, post); 
     return res.data;
 }
 // to update post into database 
-static async addPost(id, post) {
+static async updatePost(id, post) {
     const res = await axios.patch(`${url}/${id}`); 
     return res.data;
 }

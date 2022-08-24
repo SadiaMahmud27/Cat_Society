@@ -4,6 +4,8 @@ const catSchema = mongoose.Schema({
     name: String, 
     category: String, 
     content: String, 
+    gender: String,
+    Age: Number,
     image: String, 
     created: {
         type: Date, 

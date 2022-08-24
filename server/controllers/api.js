@@ -68,6 +68,7 @@ static async updateCat(req, res) {
 // delete a cat 
 static async deleteCat(req, res) {
     const id = req.params.id; 
+    const fs = require('fs');
     try {
         const result = await Cat.findByIdAndDelete(id); 
         if (result.image != "") { 

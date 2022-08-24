@@ -26,6 +26,6 @@ router.get("/:id", API.fetchCatByID);
 router.post("/", upload, API.createCat);
 router.patch("/:id", upload, API.updateCat); //patch allows to update record partialy
 router.delete("/:id", API.deleteCat);
-
+// router.get("/api.post", API.getAllPost)
 
 module.exports = router;

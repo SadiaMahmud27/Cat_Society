@@ -1,25 +1,10 @@
 <template>
   <v-app id="inspire">
+    
     <v-navigation-drawer
       v-model="drawer"
       app
     >
-      <v-list-items>
-        <v-list-item-content>
-          <v-list-item-title>
-            Cat Society
-          </v-list-item-title>
-          <v-list-item-subtitle>
-            All About Cats
-          </v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-items>
-      <v-divider></v-divider>
-      <v-list shaped>
-      <v-list-item-group
-        v-model="selectedItem"
-        color="primary"
-      >
         <v-list-item
           v-for="(item, i) in items"
           :key="i" :to="item.link" link
@@ -31,14 +16,13 @@
             <v-list-item-title v-text="item.text"></v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-      </v-list-item-group>
-    </v-list>
+     
     </v-navigation-drawer>
 
     <v-app-bar app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>All About Cats</v-toolbar-title>
     </v-app-bar>
 
     <v-main>
@@ -49,15 +33,27 @@
   </v-app>
 </template>
 
+<!-- signup page -->
+<script>
+import SignUp from './components/views/SignUp.vue'
+export default {
+  name: 'App',
+  components:{
+    SignUp
+  }
+}
+</script>
+
 <script>
   export default {
     data: () => ({ 
       drawer: null,
        items: [
         { text: "Title", icon: "mdi-home", link: "/" },
-        { text: "Add Post", icon: "mdi-note-plus", link: "/add-post" },
+        { text: "Add Cat", icon: "mdi-note-plus", link: "/add-post" },
         { text: "About", icon: "mdi-help-box", link: "/about" },
       ], 
       }),
   }
 </script>
+

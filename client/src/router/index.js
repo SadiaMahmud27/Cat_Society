@@ -1,8 +1,12 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import Addpost from '../views/Addpost.vue'
-import Post from '../views/Post.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import HomeView from '../views/HomeView.vue';
+import Addpost from '../views/Addpost.vue';
+import Post from '../views/Post.vue';
+import EditPost from '../views/EditPost.vue';
+import SignUp from '../views/SignUp';
+import LogIn from '../views/LogIn';
+
 
 Vue.use(VueRouter)
 
@@ -17,7 +21,26 @@ const routes = [
     name: 'addpost',
     component: Addpost, 
   },
-  
+  {
+    path: '/post/:id',
+    name: 'post',
+    component: Post, 
+  },
+  {
+    path: '/edit-post/:id',
+    name: 'edit-post',
+    component: EditPost, 
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LogIn
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: SignUp
+  },
   {
     path: '/about',
     name: 'about',
