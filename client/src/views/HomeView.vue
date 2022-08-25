@@ -10,6 +10,9 @@
           <v-btn class="ml-4 mt-2" small outlined color="indigo">
             {{ post.category }} 
             </v-btn> 
+            <v-btn class="ml-4 mt-2" small outlined color="green">
+            available
+            </v-btn> 
             <!-- <v-btn class="ml-4 mt-3" small outlined color="indigo">
             {{ post.gender }} 
             </v-btn> -->
@@ -18,9 +21,6 @@
             </v-card-title> 
             <v-card-text class="py-0">
               <p>{{ post.content.substring(0, 100) + "..." }}</p> 
-            </v-card-text> 
-            <v-card-text class="py-0">
-              <p>{{ post.age}}</p> 
             </v-card-text> 
           </v-card>
       </v-col>

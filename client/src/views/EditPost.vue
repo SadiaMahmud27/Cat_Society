@@ -37,10 +37,11 @@ export default {
                 category: "",
                 gender: "",
                 age: "",
+                food:"",
                 content: "",
-                image: "",
+                
             },
-            image: "",
+    
         };
     },
     async created() {
@@ -53,14 +54,20 @@ export default {
         },
         async updateForm() {
             const formData = new FormData();
-            formData.append('image', this.image);
+            formData.append('image', this.image ?? this.post.image);
             formData.append('name', this.post.name);
             formData.append('category', this.post.category);
+            formData.append('gender', this.post.gender);
+            formData.append('age', this.post.age);
+            formData.append('food', this.post.food);
             formData.append('content', this.post.content);
-            formData.append('old_image', this.post.image);
+            // formData.append('old_image', this.post.old_image);
             if (this.$refs.form.validate()) {
+                console.log(formData)
                 const response = await API.updatePost(this.$route.params.id, formData);
-                this.$router.push({ title: "home", params: { message: response.message } });
+                if (this.$route.path !== "/") {
+                    this.$router.push({path:  "/", params: { message: response.message}});
+                }
             }
         },
     },

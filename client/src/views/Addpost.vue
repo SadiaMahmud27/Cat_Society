@@ -16,7 +16,10 @@
                         </v-text-field>
                         <v-text-field label="Age" v-model="post.age" prepend-icon="mdi-view-list"
                             :rules="view - list">
-                        </v-text-field>    
+                        </v-text-field>   
+                        <v-text-field label="Food" v-model="post.food" prepend-icon="mdi-view-list"
+                            :rules="view - list">
+                        </v-text-field> 
                         <v-textarea label="Content" v-model="post.content" prepend-icon="mdi-note-plus" :rules="rules">
                         </v-textarea>
                         <v-file-input @change="selectFile" :rules="rules" show-size counter multiple
@@ -40,6 +43,7 @@ export default {
                 category: "",
                 gender: "",
                 age: "",
+                food:"",
                 content: "",
                 image: "",
             },
@@ -55,6 +59,9 @@ export default {
             formData.append('image', this.image);
             formData.append('name', this.post.name);
             formData.append('category', this.post.category);
+            formData.append('gender', this.post.gender);
+            formData.append('age', this.post.age);
+            formData.append('food', this.post.food);
             formData.append('content', this.post.content);
             if (this.$refs.form.validate()) {
                 const response = await API.addPost(formData);

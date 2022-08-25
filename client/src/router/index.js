@@ -6,7 +6,7 @@ import Post from '../views/Post.vue';
 import EditPost from '../views/EditPost.vue';
 import SignUp from '../views/SignUp';
 import LogIn from '../views/LogIn';
-
+import AdoptCat from '../views/AdoptCat';
 
 Vue.use(VueRouter)
 
@@ -42,12 +42,17 @@ const routes = [
     component: SignUp
   },
   {
+    path: '/adopt-cat',
+    name: 'adopt-cat',
+    component: AdoptCat
+  },
+  {
     path: '/about',
     name: 'about',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    component: () => import('../views/AboutView.vue')
   }
 ]
 

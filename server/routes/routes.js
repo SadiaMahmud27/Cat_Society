@@ -20,7 +20,7 @@ let upload = multer({
 
 //define all the routes
 router.get("/", API.fetchAllCat);
-router.post("/user/create/:email/:password/:name", API.createUser);
+router.post("/user/create/:email/:password/:name/:address/:phone/:nid", API.createUser);
 router.get("/user/login/:email/:password", API.login);
 router.get("/:id", API.fetchCatByID);
 router.post("/", upload, API.createCat);

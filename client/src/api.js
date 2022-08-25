@@ -20,12 +20,17 @@ static async addPost(post) {
 }
 // to update post into database 
 static async updatePost(id, post) {
-    const res = await axios.patch(`${url}/${id}`); 
+    const res = await axios.patch(`${url}/${id}`,post); 
     return res.data;
 }
 // to delete a post
 static async deletePost(id) {
     const res = await axios.delete(`${url}/${id}`); 
+    return res.data;
+}
+// signup
+static async signup(path) {
+    const res = await axios.post(`${url}/user/create/${path}`); 
     return res.data;
 }
 }

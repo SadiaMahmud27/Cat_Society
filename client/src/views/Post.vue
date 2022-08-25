@@ -14,6 +14,7 @@
                                 <v-col sm="10" class="d-flex justify-end">
                                     <v-btn color="success" text :to="{name: 'edit-post', params: {id: post._id}}">Edit</v-btn>
                                     <v-btn color="red" text @click="removePost(post._id)">Delete</v-btn>
+                                    <v-btn color="blue" @click="adoptCat(post._id)">Adopt</v-btn>
                                 </v-col>
                             </v-row>    
                         </v-card-actions>
@@ -55,6 +56,9 @@ export default {
         async removePost(id){
             const response = await API.deletePost(id);
             this.$router.push({ name: "home", params: { message: response.message}})
+        },
+        async adoptCat(id){
+            this.$router.push({ name: "adopt-cat"})
         }
     }
 

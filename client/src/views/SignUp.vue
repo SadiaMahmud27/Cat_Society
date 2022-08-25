@@ -1,48 +1,63 @@
 <template>
-  <div class="container py-4">
-    <div class="row">
-      <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
-        <h3 class="text-center">Sign Up</h3>
-        <form role="form" id="contact-form" method="post" autocomplete="off">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="input-group input-group-dynamic mb-4">
-                  <label class="form-label">First Name</label>
-                  <input class="form-control" aria-label="First Name..." type="text" >
-                </div>
-              </div>
-              <div class="col-md-6 ps-2">
-                <div class="input-group input-group-dynamic">
-                  <label class="form-label">Last Name</label>
-                  <input type="text" class="form-control" placeholder="" aria-label="Last Name..." >
-                </div>
-              </div>
+    <div class="container py-4">
+        <div class="row">
+            <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
+                <h1 class="text-center">Sign Up to Adopt A Cat Today</h1>
+                <v-form ref="form" @submit.prevent="submitForm" role="form"  class="pa-5" enctype="multipart/form-data">
+                    <v-text-field label="Name" v-model="user.name" prepend-icon="mdi-note" :rules="rules">
+                        </v-text-field>
+                        <v-text-field label="Email:" v-model="user.email" prepend-icon="mdi-view-list"
+                            :rules="view - list">
+                        </v-text-field>
+                        <v-text-field label="Password:" v-model="user.password" prepend-icon="mdi-view-list"
+                            :rules="view - list">
+                        </v-text-field>
+                        <v-text-field label="Address:" v-model="user.address" prepend-icon="mdi-view-list"
+                            :rules="view - list">
+                        </v-text-field>   
+                        <v-text-field label="Phone:" v-model="user.phone" prepend-icon="mdi-view-list"
+                            :rules="view - list">
+                        </v-text-field> 
+                        <v-text-field label="NID:" v-model="user.nid" prepend-icon="mdi-view-list"
+                            :rules="view - list">
+                        </v-text-field> 
+                        <v-btn type="submit" class="mt-3" color="primary">Signup</v-btn>
+                </v-form>
             </div>
-            <div class="mb-4">
-              <div class="input-group input-group-dynamic">
-                <label class="form-label">Email Address</label>
-                <input type="email" class="form-control">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-check form-switch mb-4 d-flex align-items-center">
-                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked="">
-                  <label class="form-check-label ms-3 mb-0" for="flexSwitchCheckDefault">I agree to the <a href="javascript:;" class="text-dark"><u>Terms and Conditions</u></a>.</label>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <v-btn type="submit" class="mt-3" color="success">Sign Up</v-btn>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
-export default{}
+import API from "../api";
+export default {
+    name: 'signup',
+    data() {
+        return {
+            rules: [(value) => !!value || "This field is required"],
+            user: {
+                email: "",
+                password: "",
+                name: "",
+                address: "",
+                phone:"",
+                nid: "",
+            },
+        };
+    },
+    methods: {
+        async submitForm() {
+            if (this.$refs.form.validate()) {
+                console.log(this.user.email);
+                console.log(this.user.name);
+                console.log(this.user.password);
+                console.log(this.user.address);
+                const response = await API.signup(`${this.user.email}/${this.user.password}/${this.user.name}/${this.user.address}/${this.user.phone}/${this.user.nid}`);
+                if (this.$route.path !== "/") {
+                    this.$router.push("/");
+                }
+            }
+        },
+    },
+};
 </script>

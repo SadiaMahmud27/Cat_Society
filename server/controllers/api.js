@@ -1,5 +1,6 @@
 const Cat = require("../models/cats");
 const User = require("../models/users");
+const fs = require('fs');
 module.exports = class API {
 
     //fetch all cats
@@ -45,13 +46,14 @@ static async updateCat(req, res) {
     let new_image = ""; 
     if (req.file) { 
         new_image = req.file.filename; //will get the file name from multer middleware
-        try {
-            fs.unlinkSync("./uploads/" + req.body.old_image); //first remove the old image, then upload the new image on that place in the directory
-        } catch (err) {
-            console.log(err);
-        } 
+        console.log(new_image)
+        // try {
+        //     fs.unlinkSync("./uploads/" + req.body.image); //first remove the old image, then upload the new image on that place in the directory
+        // } catch (err) {
+        //     console.log(err);
+        // } 
     } else {
-        new_image = req.body.old_image;
+        new_image = req.body.image;
         }
         const newCat = req.body; 
         newCat.image = new_image;
@@ -90,7 +92,10 @@ static async createUser(req, res) {
     const email = req.params.email;//get all the body key value pair and assign in cat constant
     const password = req.params.password;//get all the body key value pair and assign in cat constant
     const name = req.params.name;//get all the body key value pair and assign in cat constant
-    const user = {email: email, password: password, name: name}
+    const address = req.params.address;
+    const phone = req.params.phone;
+    const nid = req.params.nid;
+    const user = {email: email, password: password, name: name, address: address, phone: phone, nid: nid}
     console.log(user);
     try { 
         await User.create(user);
