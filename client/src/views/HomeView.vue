@@ -4,7 +4,7 @@
     {{this.$route.params.message}}
     </v-alert>
     <v-form ref="form" class="pa-5" @submit.prevent="submitForm" enctype="multipart/form-data">
-      <v-text-field label="Search" v-model="search" prepend-icon="mdi-note" :rules="rules">
+      <v-text-field label="Search" v-model="search" prepend-icon="mdi-account-search" :rules="rules">
       </v-text-field>
       <v-btn type="submit" class="mt-3" color="primary">Search</v-btn>
     </v-form>

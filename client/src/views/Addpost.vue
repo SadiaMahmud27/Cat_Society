@@ -8,16 +8,16 @@
                     <v-form ref="form" @submit.prevent="submitForm" class="pa-5" enctype="multipart/form-data">
                         <v-text-field label="Name" v-model="post.name" prepend-icon="mdi-note" :rules="rules">
                         </v-text-field>
-                        <v-text-field label="Category" v-model="post.category" prepend-icon="mdi-view-list"
+                        <v-text-field label="Category" v-model="post.category" prepend-icon="mdi-format-list-bulleted"
                             :rules="view - list">
                         </v-text-field>
-                        <v-text-field label="Gender" v-model="post.gender" prepend-icon="mdi-view-list"
+                        <v-text-field label="Gender" v-model="post.gender" prepend-icon="mdi-gender-male-female"
                             :rules="view - list">
                         </v-text-field>
-                        <v-text-field label="Age" v-model="post.age" prepend-icon="mdi-view-list"
+                        <v-text-field label="Age" v-model="post.age" prepend-icon="mdi-plus"
                             :rules="view - list">
                         </v-text-field>   
-                        <v-text-field label="Food" v-model="post.food" prepend-icon="mdi-view-list"
+                        <v-text-field label="Food" v-model="post.food" prepend-icon="mdi-food-variant"
                             :rules="view - list">
                         </v-text-field> 
                         <v-textarea label="Content" v-model="post.content" prepend-icon="mdi-note-plus" :rules="rules">

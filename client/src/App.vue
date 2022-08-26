@@ -33,11 +33,11 @@ export default {
   data: () => ({
     drawer: null,
     items: [
-      { text: "Gallery of Cats", icon: "mdi-home", link: "/" },
-      { text: "Add Cat", icon: "mdi-note-plus", link: "/add-post" },
-      { text: "Adopted Cats", icon: "mdi-account-box", link: "/adopt-cat" },
-      { text: "LogIn", icon: "mdi-account-box", link: "/about" },
-      { text: "Signup", icon: "mdi-account-box", link: "/signup" },
+      { text: "Gallery of Cats", icon: "mdi-folder-multiple-image", link: "/" },
+      { text: "Add Cat", icon: "mdi-plus-box-outline", link: "/add-post" },
+      { text: "Adopted Cats", icon: "mdi-format-list-bulleted", link: "/adopt-cat" },
+      { text: "LogIn", icon: "mdi-login", link: "/about" },
+      { text: "Signup", icon: "mdi-account-plus", link: "/signup" },
     ],
   }),
 }
