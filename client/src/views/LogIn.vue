@@ -30,11 +30,29 @@
 </template>
 
 <script>
+import API from "../api";
 export default {
+    name: 'login',
+    data() {
+        return {
+            rules: [(value) => !!value || "This field is required"],
+            user: {
+                email: "",
+                password: "",
+            },
+        };
+    },
     methods: {
-        loginUser(){
-            this.$router.push('/')
-        }
-    }
-}
+        async submitForm() {
+            if (this.$refs.form.validate()) {
+                console.log(this.user.email);
+                console.log(this.user.password);
+                const response = await API.login(`${this.user.email}/${this.user.password}`);
+                if (this.$route.path !== "/") {
+                    this.$router.push("/");
+                }
+            }
+        },
+    },
+};
 </script>

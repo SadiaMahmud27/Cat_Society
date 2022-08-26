@@ -33,4 +33,19 @@ static async signup(path) {
     const res = await axios.post(`${url}/user/create/${path}`); 
     return res.data;
 }
+// signup
+static async adoptCat(cat) {
+    const res = await axios.post(`${url}/adopt`, cat); 
+    return res.data;
+}
+// signup
+static async getAdoptedCats() {
+    const res = await axios.get(`${url}/adopt`); 
+    return res.data;
+}
+// signup
+static async search(query) {
+    const res = await axios.get(`${url}/search/${query}`); 
+    return res.data;
+}
 }

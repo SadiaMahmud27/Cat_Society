@@ -58,7 +58,9 @@ export default {
             this.$router.push({ name: "home", params: { message: response.message}})
         },
         async adoptCat(id){
-            this.$router.push({ name: "adopt-cat"})
+            const response = await API.adoptCat(this.post);
+            this.$router.push({ name: "home", params: { message: response.message}})
+            // this.$router.push({ name: "adopt-cat"})
         }
     }
 

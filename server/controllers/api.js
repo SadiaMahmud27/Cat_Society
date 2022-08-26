@@ -1,5 +1,6 @@
 const Cat = require("../models/cats");
 const User = require("../models/users");
+const Adopt = require("../models/adopts");
 const fs = require('fs');
 module.exports = class API {
 
@@ -117,9 +118,46 @@ static async login(req, res) {
     res.status(404).json({ message: err.message })
     }
 }
+
+static async getAdoptedCats(req, res){
+    try{
+        const adopts = await Adopt.find();
+        res.status(200).json(adopts)
+    } catch (err) {
+        res.status(404).json({ message: err.message })
+    }
+}
+
+static async search(req, res){
+    const query = req.params.query;
+    try{
+
+        const cats = await Cat.find({category: query});
+        console.log(cats);
+        res.status(200).json(cats)
+    } catch (err) {
+        res.status(404).json({ message: err.message })
+    }
+}
+
+static async adopt(req, res) {
+    const adopt = req.body; 
+    const newAdopt = {name: adopt.name, category: adopt.category, food: adopt.food, gender: adopt.gender, age: adopt.age, content: adopt.content, image: adopt.image}
+    console.log(newAdopt);
+
+    try { 
+
+        await Adopt.create(newAdopt);
+        await Cat.findByIdAndDelete(req.body._id); 
+        res.status(201).json({ message: "Cat adopted successfully!"});
+    } catch (err) {
+        console.log(err.message);
+        res.status(400).json({ message: err.message })
+    }
+}
     
 }
 
-    
-
-
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};

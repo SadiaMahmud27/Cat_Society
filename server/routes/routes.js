@@ -22,6 +22,9 @@ let upload = multer({
 router.get("/", API.fetchAllCat);
 router.post("/user/create/:email/:password/:name/:address/:phone/:nid", API.createUser);
 router.get("/user/login/:email/:password", API.login);
+router.get("/adopt", API.getAdoptedCats);
+router.get("/search/:query", API.search);
+router.post("/adopt", API.adopt);
 router.get("/:id", API.fetchCatByID);
 router.post("/", upload, API.createCat);
 router.patch("/:id", upload, API.updateCat); //patch allows to update record partialy

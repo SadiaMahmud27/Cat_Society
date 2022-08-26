@@ -35,7 +35,9 @@ export default {
     items: [
       { text: "Gallery of Cats", icon: "mdi-home", link: "/" },
       { text: "Add Cat", icon: "mdi-note-plus", link: "/add-post" },
+      { text: "Adopted Cats", icon: "mdi-account-box", link: "/adopt-cat" },
       { text: "LogIn", icon: "mdi-account-box", link: "/about" },
+      { text: "Signup", icon: "mdi-account-box", link: "/signup" },
     ],
   }),
 }
