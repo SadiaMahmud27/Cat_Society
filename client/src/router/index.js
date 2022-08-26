@@ -46,11 +46,7 @@ const routes = [
     name: 'adopt-cat',
     component: AdoptCat
   },
-  {
-    path: '/signup',
-    name: 'signup',
-    component: Signup
-  },
+
   {
     path: '/about',
     name: 'about',
