@@ -47,6 +47,11 @@ const routes = [
     component: AdoptCat
   },
   {
+    path: '/signup',
+    name: 'signup',
+    component: Signup
+  },
+  {
     path: '/about',
     name: 'about',
     // route level code-splitting
